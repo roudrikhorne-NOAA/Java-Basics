@@ -1,10 +1,21 @@
 public class Main {
     public static void main(String[] args) {
-        // This is your first line of code!
-        System.out.println("Hello Guru! My development environment is live.");
+        String myName = "Roudrik Horne";
+        double yearsExp = 0.5;
+        double targetRate = 50.00;
+        boolean isLearning = true;
+
+        // --- NEW CALCULATION SECTION ---
+        int hoursPerWeek = 40;
+        double weeklyEarnings = targetRate * hoursPerWeek;
+        // -------------------------------
+
+        System.out.println("Developer Name: " + myName);
+        System.out.println("Experience: " + yearsExp + " years");
+        System.out.println("Rate: $" + targetRate);
+        System.out.println("Currently Learning? " + isLearning);
         
-        // Let's do a little math to prove it's working
-        int result = 5 + 5;
-        System.out.println("The result of 5 + 5 is: " + result);
+        // Print your calculation result
+        System.out.println("Potential Weekly Earnings: $" + weeklyEarnings);
     }
 }
