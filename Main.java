@@ -1,36 +1,41 @@
-import java.util.Scanner; // This tells Java we need the "Listening" tool
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // 1. Initialize the Scanner
         Scanner keyboard = new Scanner(System.in);
+        String continueRunning = "y";
 
-        // 2. Ask for the User's Name
-        System.out.print("Enter your name: ");
-        String myName = keyboard.nextLine(); // Waits for you to type and hit Enter
+        while (continueRunning.equalsIgnoreCase("y")) {
+            
+            System.out.print("\nEnter developer name: ");
+            // FIX 1: Use nextLine() to allow spaces in names
+            String myName = keyboard.nextLine(); 
 
-        // 3. Ask for the Hourly Rate
-        System.out.print("Enter your target hourly rate: ");
-        double targetRate = keyboard.nextDouble();
+            System.out.print("Enter target hourly rate: ");
+            double targetRate = keyboard.nextDouble();
+            
+            // FIX 2: This "flushes" the buffer so the next loop works
+            keyboard.nextLine(); 
 
-        // 4. Calculations (Same as Week 1)
-        int hoursPerWeek = 40;
-        double weeklyEarnings = targetRate * hoursPerWeek;
+            double weeklyEarnings = targetRate * 40;
 
-        // 5. Output
-        System.out.println("\n--- Developer Profile ---");
-        System.out.println("Name: " + myName);
-        System.out.println("Weekly Earnings: $" + weeklyEarnings);
+            System.out.println("--- Profile Result ---");
+            System.out.println("Name: " + myName);
+            System.out.println("Weekly: $" + weeklyEarnings);
 
-     if (weeklyEarnings >= 3000) {
-            System.out.println("Status: Elite Level Developer!");
-        } else if (weeklyEarnings >= 2000) {
-            System.out.println("Status: Goal Achieved!");
-        } else {
-            System.out.println("Status: Keep climbing!");
+            if (weeklyEarnings >= 3000) {
+                System.out.println("Status: Elite Level Developer!");
+            } else if (weeklyEarnings >= 2000) {
+                System.out.println("Status: Goal Achieved!");
+            } else {
+                System.out.println("Status: Keep climbing!");
+            }
+
+            System.out.print("\nWould you like to enter another profile? (y/n): ");
+            continueRunning = keyboard.nextLine(); // Use nextLine here too
         }
-           
-        // 6. Close the scanner (Good "Guru" habit!)
+
+        System.out.println("Thanks for using the Guru Career Tracker. Goodbye!");
         keyboard.close();
     }
 }
