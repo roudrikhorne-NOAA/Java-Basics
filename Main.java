@@ -1,25 +1,34 @@
+import java.util.Scanner; // This tells Java we need the "Listening" tool
+
 public class Main {
     public static void main(String[] args) {
-        String myName = "Roudrik Horne";
-        double yearsExp = 0.5;
-        double targetRate = 50.00;
-        boolean isLearning = true;
+        // 1. Initialize the Scanner
+        Scanner keyboard = new Scanner(System.in);
 
-        // --- CALCULATION SECTION ---
+        // 2. Ask for the User's Name
+        System.out.print("Enter your name: ");
+        String myName = keyboard.nextLine(); // Waits for you to type and hit Enter
+
+        // 3. Ask for the Hourly Rate
+        System.out.print("Enter your target hourly rate: ");
+        double targetRate = keyboard.nextDouble();
+
+        // 4. Calculations (Same as Week 1)
         int hoursPerWeek = 40;
         double weeklyEarnings = targetRate * hoursPerWeek;
 
-        // --- LOGIC SECTION ---
-        System.out.println("Developer Name: " + myName);
-        System.out.println("Experience: " + yearsExp + " years");
-        System.out.println("Rate: $" + targetRate);
-        System.out.println("Currently Learning? " + isLearning);
-        System.out.println("Potential Weekly Earnings: $" + weeklyEarnings);
+        // 5. Output
+        System.out.println("\n--- Developer Profile ---");
+        System.out.println("Name: " + myName);
+        System.out.println("Weekly Earnings: $" + weeklyEarnings);
 
         if (weeklyEarnings >= 2000) {
-            System.out.println("Status: Income Goal Achieved!");
+            System.out.println("Status: Goal Achieved!");
         } else {
-            System.out.println("Status: Keep grinding, Guru!");
+            System.out.println("Status: Keep climbing!");
         }
-    } 
+
+        // 6. Close the scanner (Good "Guru" habit!)
+        keyboard.close();
+    }
 }
