@@ -5,17 +5,21 @@ public class Main {
         double targetRate = 50.00;
         boolean isLearning = true;
 
-        // --- NEW CALCULATION SECTION ---
+        // --- CALCULATION SECTION ---
         int hoursPerWeek = 40;
         double weeklyEarnings = targetRate * hoursPerWeek;
-        // -------------------------------
 
+        // --- LOGIC SECTION ---
         System.out.println("Developer Name: " + myName);
         System.out.println("Experience: " + yearsExp + " years");
         System.out.println("Rate: $" + targetRate);
         System.out.println("Currently Learning? " + isLearning);
-        
-        // Print your calculation result
         System.out.println("Potential Weekly Earnings: $" + weeklyEarnings);
-    }
+
+        if (weeklyEarnings >= 2000) {
+            System.out.println("Status: Income Goal Achieved!");
+        } else {
+            System.out.println("Status: Keep grinding, Guru!");
+        }
+    } 
 }
