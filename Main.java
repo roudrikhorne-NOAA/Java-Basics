@@ -22,12 +22,14 @@ public class Main {
         System.out.println("Name: " + myName);
         System.out.println("Weekly Earnings: $" + weeklyEarnings);
 
-        if (weeklyEarnings >= 2000) {
+     if (weeklyEarnings >= 3000) {
+            System.out.println("Status: Elite Level Developer!");
+        } else if (weeklyEarnings >= 2000) {
             System.out.println("Status: Goal Achieved!");
         } else {
             System.out.println("Status: Keep climbing!");
         }
-
+           
         // 6. Close the scanner (Good "Guru" habit!)
         keyboard.close();
     }
