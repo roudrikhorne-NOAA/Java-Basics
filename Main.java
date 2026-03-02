@@ -6,36 +6,46 @@ public class Main {
         String continueRunning = "y";
 
         while (continueRunning.equalsIgnoreCase("y")) {
-            
             System.out.print("\nEnter developer name: ");
-            // FIX 1: Use nextLine() to allow spaces in names
-            String myName = keyboard.nextLine(); 
+            String myName = keyboard.nextLine(); // Grabs the whole line including spaces
 
             System.out.print("Enter target hourly rate: ");
             double targetRate = keyboard.nextDouble();
-            
-            // FIX 2: This "flushes" the buffer so the next loop works
-            keyboard.nextLine(); 
+            keyboard.nextLine(); // "Flushes" the buffer to prevent skipping the next name
 
-            double weeklyEarnings = targetRate * 40;
+            // --- CALLING THE METHOD ---
+            // Instead of doing the math here, we ask our "tool" for the answer
+            double weeklyEarnings = calculateEarnings(targetRate);
 
             System.out.println("--- Profile Result ---");
             System.out.println("Name: " + myName);
             System.out.println("Weekly: $" + weeklyEarnings);
 
-            if (weeklyEarnings >= 3000) {
-                System.out.println("Status: Elite Level Developer!");
-            } else if (weeklyEarnings >= 2000) {
-                System.out.println("Status: Goal Achieved!");
-            } else {
-                System.out.println("Status: Keep climbing!");
-            }
+            displayStatus(weeklyEarnings); // Another method call!
 
             System.out.print("\nWould you like to enter another profile? (y/n): ");
-            continueRunning = keyboard.nextLine(); // Use nextLine here too
+            continueRunning = keyboard.nextLine();
         }
 
         System.out.println("Thanks for using the Guru Career Tracker. Goodbye!");
         keyboard.close();
+    }
+
+    // --- NEW METHOD 1: The Calculator ---
+    // This method takes a 'rate' and returns the final math result
+    public static double calculateEarnings(double rate) {
+        return rate * 40;
+    }
+
+    // --- NEW METHOD 2: The Logic Gate ---
+    // This handles the "Status" printing to keep our 'main' section clean
+    public static void displayStatus(double earnings) {
+        if (earnings >= 3000) {
+            System.out.println("Status: Elite Level Developer!");
+        } else if (earnings >= 2000) {
+            System.out.println("Status: Goal Achieved!");
+        } else {
+            System.out.println("Status: Keep climbing!");
+        }
     }
 }
