@@ -7,21 +7,26 @@ public class Main {
 
         while (continueRunning.equalsIgnoreCase("y")) {
             System.out.print("\nEnter developer name: ");
-            String myName = keyboard.nextLine(); // Grabs the whole line including spaces
+            String myName = keyboard.nextLine();
 
             System.out.print("Enter target hourly rate: ");
             double targetRate = keyboard.nextDouble();
-            keyboard.nextLine(); // "Flushes" the buffer to prevent skipping the next name
+            
+            // NEW: Ask for hours instead of assuming 40
+            System.out.print("Enter hours worked this week: ");
+            int actualHours = keyboard.nextInt();
+            
+            keyboard.nextLine(); // Still need to flush that buffer!
 
-            // --- CALLING THE METHOD ---
-            // Instead of doing the math here, we ask our "tool" for the answer
-            double weeklyEarnings = calculateEarnings(targetRate);
+            // --- THE SMART METHOD CALL ---
+            // We are now sending TWO values to the method
+            double weeklyEarnings = calculateEarnings(targetRate, actualHours);
 
             System.out.println("--- Profile Result ---");
             System.out.println("Name: " + myName);
             System.out.println("Weekly: $" + weeklyEarnings);
 
-            displayStatus(weeklyEarnings); // Another method call!
+            displayStatus(weeklyEarnings);
 
             System.out.print("\nWould you like to enter another profile? (y/n): ");
             continueRunning = keyboard.nextLine();
@@ -31,14 +36,12 @@ public class Main {
         keyboard.close();
     }
 
-    // --- NEW METHOD 1: The Calculator ---
-    // This method takes a 'rate' and returns the final math result
-    public static double calculateEarnings(double rate) {
-        return rate * 40;
+    // --- UPDATED METHOD 1: The Flexible Calculator ---
+    // Now it accepts 'rate' AND 'hours'
+    public static double calculateEarnings(double rate, int hours) {
+        return rate * hours;
     }
 
-    // --- NEW METHOD 2: The Logic Gate ---
-    // This handles the "Status" printing to keep our 'main' section clean
     public static void displayStatus(double earnings) {
         if (earnings >= 3000) {
             System.out.println("Status: Elite Level Developer!");
