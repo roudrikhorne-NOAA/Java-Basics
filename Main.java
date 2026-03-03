@@ -36,12 +36,19 @@ public class Main {
         keyboard.close();
     }
 
-    // --- UPDATED METHOD 1: The Flexible Calculator ---
-    // Now it accepts 'rate' AND 'hours'
+// --- UPDATED METHOD: The Overtime-Aware Calculator ---
     public static double calculateEarnings(double rate, int hours) {
-        return rate * hours;
-    }
+        if (hours > 40) {
+            int overtimeHours = hours - 40;
+            double regularPay = 40 * rate;
+            double overtimePay = overtimeHours * (rate * 1.5);
+            return regularPay + overtimePay;
+        } else {
+            return rate * hours;
+        }
+    } // This brace closes the method
 
+    // --- NEW METHOD 2: The Logic Gate ---
     public static void displayStatus(double earnings) {
         if (earnings >= 3000) {
             System.out.println("Status: Elite Level Developer!");
@@ -50,5 +57,5 @@ public class Main {
         } else {
             System.out.println("Status: Keep climbing!");
         }
-    }
-}
+    } // This brace closes displayStatus
+} // <--- THIS IS THE MISSING BRACE that closes the whole Class!
