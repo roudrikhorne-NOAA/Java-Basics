@@ -37,7 +37,7 @@ public class Main {
         // --- FINAL REPORT ---
         System.out.println("\n========== WEEK 4 OBJECT-ORIENTED REPORT ==========");
         for (Developer d : payrollList) {
-            System.out.printf("Name: %-15s | Net Pay: $%.2f%n", d.name, d.calculateNet());
+            System.out.printf("Name: %-15s | Net Pay: $%.2f%n", d.getName(), d.calculateNet());
         }
         System.out.println("====================================================");
         
