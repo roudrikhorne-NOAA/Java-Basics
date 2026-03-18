@@ -4,14 +4,14 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
-        // POLYMORPHISM: This list can now hold BOTH Developers and Managers!
+        // POLYMORPHISM: This list now holds Developers, Managers, AND Contractors!
         ArrayList<Developer> payrollList = new ArrayList<>(); 
         
         String continueRunning = "y";
 
         while (continueRunning.equalsIgnoreCase("y")) {
             System.out.println("\n--- New Employee ---");
-            System.out.print("Is this a (1) Normal Developer or (2) Manager? Enter 1 or 2: ");
+            System.out.print("Is this a (1) Developer, (2) Manager, or (3) Contractor? Enter 1, 2, or 3: ");
             int employeeType = keyboard.nextInt();
             keyboard.nextLine(); // Buffer Flush
 
@@ -24,27 +24,35 @@ public class Main {
             System.out.print("Enter hours worked: ");
             int hours = keyboard.nextInt();
 
-            // --- THE BRANCHING PATH ---
+            // --- THE 3-WAY BRANCHING PATH ---
             if (employeeType == 2) {
-                // It's a Manager! Ask for the bonus.
+                // Option 2: It's a Manager!
                 System.out.print("Enter weekly bonus: ");
                 double bonus = keyboard.nextDouble();
                 keyboard.nextLine(); // Buffer Flush
                 
-                // Build a Manager object
                 Manager mgr = new Manager(name, rate, hours, bonus);
-                payrollList.add(mgr); // Add to the master list
+                payrollList.add(mgr); 
                 
                 System.out.println("--- Manager Profile Created ---");
                 System.out.printf("Gross: $%.2f | Net (with bonus): $%.2f%n", mgr.calculateGross(), mgr.calculateNet());
                 
-            } else {
-                // It's a normal Developer!
+            } else if (employeeType == 3) {
+                // Option 3: It's a Contractor!
                 keyboard.nextLine(); // Buffer Flush
                 
-                // Build a Developer object
+                Contractor cont = new Contractor(name, rate, hours);
+                payrollList.add(cont); 
+                
+                System.out.println("--- Contractor Profile Created ---");
+                System.out.printf("Gross: $%.2f | Net (NO overtime): $%.2f%n", cont.calculateGross(), cont.calculateNet());
+                
+            } else {
+                // Option 1: It's a normal Developer!
+                keyboard.nextLine(); // Buffer Flush
+                
                 Developer dev = new Developer(name, rate, hours);
-                payrollList.add(dev); // Add to the master list
+                payrollList.add(dev); 
                 
                 System.out.println("--- Developer Profile Created ---");
                 System.out.printf("Gross: $%.2f | Net: $%.2f%n", dev.calculateGross(), dev.calculateNet());
@@ -57,7 +65,7 @@ public class Main {
         // --- FINAL REPORT (Polymorphism in Action!) ---
         System.out.println("\n========== WEEK 5 POLYMORPHISM REPORT ==========");
         for (Developer d : payrollList) {
-            // Java automatically knows which calculateNet() to call!
+            // Java looks at the object and automatically knows which math to use!
             System.out.printf("Name: %-15s | Net Pay: $%.2f%n", d.getName(), d.calculateNet());
         }
         System.out.println("====================================================");
