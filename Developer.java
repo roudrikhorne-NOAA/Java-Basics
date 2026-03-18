@@ -1,8 +1,8 @@
 public class Developer {
-    // 1. THE LOCKED VAULT (Private Attributes)
-    private String name;
-    private double hourlyRate;
-    private int hoursWorked;
+    // 1. THE LOCKED VAULT 
+    private String name; 
+    protected double hourlyRate; // Changed to protected!
+    protected int hoursWorked;   // Changed to protected!
 
     // 2. THE CONSTRUCTOR (Still public, so we can build them)
     public Developer(String name, double hourlyRate, int hoursWorked) {
