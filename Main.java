@@ -1,6 +1,10 @@
 import java.util.Scanner;
 import java.util.ArrayList;
-
+import java.util.Scanner;
+import java.util.ArrayList;
+// NEW IMPORTS FOR WEEK 7:
+import java.io.FileWriter;
+import java.io.PrintWriter;
 public class Main {
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
@@ -98,12 +102,30 @@ public class Main {
             continueRunning = keyboard.nextLine();
         }
 
-        // --- FINAL REPORT ---
-        System.out.println("\n========== WEEK 6 INDESTRUCTIBLE REPORT ==========");
-        for (Developer d : payrollList) {
-            System.out.printf("Name: %-15s | Net Pay: $%.2f%n", d.getName(), d.calculateNet());
+        // --- WEEK 7: SAVING TO A FILE ---
+        System.out.println("\nGenerating and saving report to Payroll_Report.txt...");
+
+        try {
+            // 1. Create the File and the Writer
+            FileWriter fileWriter = new FileWriter("Payroll_Report.txt");
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+
+            // 2. Write the exact same report directly to the file!
+            printWriter.println("========== WEEK 7 FILE I/O REPORT ==========");
+            for (Developer d : payrollList) {
+                // Notice we use printWriter.printf instead of System.out.printf!
+                printWriter.printf("Name: %-15s | Net Pay: $%.2f%n", d.getName(), d.calculateNet());
+            }
+            printWriter.println("====================================================");
+
+            // 3. CLOSE THE VAULT DOOR (Absolutely Crucial!)
+            printWriter.close();
+            
+            System.out.println("✅ Report successfully saved to your hard drive!");
+
+        } catch (Exception e) {
+            System.out.println("❌ ERROR: Could not save the file to the hard drive.");
         }
-        System.out.println("====================================================");
         
         System.out.println("Goodbye!");
         keyboard.close();
