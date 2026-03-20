@@ -107,7 +107,7 @@ public class Main {
 
         try {
             // 1. Create the File and the Writer
-            FileWriter fileWriter = new FileWriter("Payroll_Report.txt");
+           FileWriter fileWriter = new FileWriter("Payroll_Report.txt", true);
             PrintWriter printWriter = new PrintWriter(fileWriter);
 
             // 2. Write the exact same report directly to the file!
