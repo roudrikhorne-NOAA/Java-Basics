@@ -1,5 +1,4 @@
-import java.util.Scanner;
-import java.util.ArrayList;
+import java.io.File; // NEW: Needed to check if the file exists
 import java.util.Scanner;
 import java.util.ArrayList;
 // NEW IMPORTS FOR WEEK 7:
@@ -9,7 +8,26 @@ public class Main {
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
         ArrayList<Developer> payrollList = new ArrayList<>(); 
-        
+        // --- STARTUP: LOAD PREVIOUS SQUAD DATA ---
+        File database = new File("Payroll_Report.txt");
+
+        if (database.exists()) {
+            System.out.println("📂 Accessing Vice Dossiers... Found existing Payroll Report.");
+            System.out.println("========== PREVIOUS SESSION DATA ==========");
+            try {
+                Scanner fileReader = new Scanner(database);
+                while (fileReader.hasNextLine()) {
+                    String data = fileReader.nextLine();
+                    System.out.println(data);
+                }
+                fileReader.close();
+                System.out.println("===========================================\n");
+            } catch (Exception e) {
+                System.out.println("❌ Could not read the existing dossier.");
+            }
+        } else {
+            System.out.println("🆕 No existing dossier found. Starting a fresh report.");
+        }
         String continueRunning = "y";
 
         while (continueRunning.equalsIgnoreCase("y")) {

@@ -8,3 +8,10 @@ Name: Sonny Crockett  | Net Pay: $2018.75
 ========== WEEK 7 FILE I/O REPORT ==========
 Name: Izzy Moreno     | Net Pay: $1700.00
 ====================================================
+========== WEEK 7 FILE I/O REPORT ==========
+Name: Roudrik horne   | Net Pay: $3453.13
+Name: Ricardo Tubbs   | Net Pay: $2921.88
+Name: Sonny Crockett  | Net Pay: $2337.50
+Name: Lt. Martin Castillo | Net Pay: $4962.50
+Name: Izzy Moreno     | Net Pay: $1700.00
+====================================================
